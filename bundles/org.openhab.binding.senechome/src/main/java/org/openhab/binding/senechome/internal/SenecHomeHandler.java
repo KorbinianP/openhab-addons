@@ -34,6 +34,7 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.smarthome.core.cache.ExpiringCache;
+import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.QuantityType;
 import org.eclipse.smarthome.core.library.types.StringType;
@@ -222,6 +223,11 @@ public class SenecHomeHandler extends BaseThingHandler {
                     new QuantityType<Frequency>(
                             getSenecValue(response.grid.currentGridFrequency).setScale(2, RoundingMode.HALF_UP),
                             SmartHomeUnits.HERTZ));
+
+            Channel channelBatteryStateValue = getThing()
+                    .getChannel(SenecHomeBindingConstants.CHANNEL_SENEC_BATTERY_STATE_VALUE);
+            updateState(channelBatteryStateValue.getUID(),
+                    new DecimalType(getSenecValue(response.energy.batteryState).intValue()));
 
             Channel channelBatteryState = getThing().getChannel(SenecHomeBindingConstants.CHANNEL_SENEC_BATTERY_STATE);
             updateBatteryState(channelBatteryState, getSenecValue(response.energy.batteryState).intValue());
