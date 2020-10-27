@@ -53,6 +53,7 @@ The property `limitationTresholdValue` is used as threshold for channel `powerLi
 | gridVoltagePhase2    | volt      | Grid voltage on Phase 2                                                  |
 | gridVoltagePhase3    | volt      | Grid voltage on Phase 3                                                  |
 | gridFrequency        | hertz     | Grid frequency                                                           |
+| SenecBatteryVoltage  | volt      | Battery Voltage                                                          |
 | SenecLiveBatCharge   | watt hour | Live Bat Charge                                                          |
 | SenecLiveBatDischarge| watt hour | Live Bat Discharge                                                       |
 | SenecLiveGridImport  | watt hour | Live Grid Import                                                         |
